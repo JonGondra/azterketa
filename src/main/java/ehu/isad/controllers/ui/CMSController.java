@@ -16,11 +16,13 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CMSController implements Initializable {
 
-    ObservableList<CMSModel> lista = FXCollections.observableArrayList();
+    private ArrayList<CMSModel> lista = new ArrayList<CMSModel>();
 
     private static CMSController instance=new CMSController();
 
@@ -75,11 +77,16 @@ public class CMSController implements Initializable {
             }
 
         }
+        loadtable();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.loadTabla();
+    }
+    private void loadtable(){
+        ObservableList<CMSModel> cmsmodel = FXCollections.observableArrayList(lista);
+        table.setItems(cmsmodel);
     }
     public void loadTabla(){
         table.setEditable(true);
@@ -124,7 +131,7 @@ public class CMSController implements Initializable {
         //                }
         //            };
         //        });
-        table.setItems(lista);
+       //table.setItems(lista);
 
         //checkbox
 
