@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,18 +87,28 @@ public class CMSController implements Initializable {
         md5Column.setCellValueFactory(new PropertyValueFactory<>("md5"));
         versionColumn.setCellValueFactory(new PropertyValueFactory<>("version"));
 
+        versionColumn.setOnEditCommit(t->{
+            if(t.getOldValue()==null&&t.getNewValue()!=null){
+                t.getTableView().getItems().get(t.getTablePosition().getRow())
+                        .setVersion(t.getNewValue());
+                CMSDB.getInstance().addToDB(t.getTableView().getItems().get(t.getTablePosition().getRow()));
+                InfoLBL.setText("md5 eta bertsio berria datubasean sartu dira");
+            }
+
+        });
+
         //Como hacer que las columnas sean editables
         //Esto en caso de text field.
         versionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         //Asi es como se guarda en el objeto.
-        versionColumn.setOnEditCommit((TableColumn.CellEditEvent<CMSModel, String> event) -> {
-            TablePosition<CMSModel, String> pos = event.getTablePosition();
-            int row = pos.getRow();
-            CMSModel cmsModel = event.getTableView().getItems().get(row);
-            String content = event.getNewValue();
-            cmsModel.setVersion(content);
+        Callback<TableColumn<CMSModel, String>, TableCell<CMSModel, String >> defaultTextFieldCellFactoryIzena
+                = TextFieldTableCell.forTableColumn();
 
-                });
+        versionColumn.setCellFactory(col -> {
+            TableCell<CMSModel, String> cell = defaultTextFieldCellFactoryIzena.call(col);
+            return cell ;
+        });
+
         //Si es una foto, asi se carga el display
         //irudiaTable.setCellValueFactory(new PropertyValueFactory<>("image"));
         // irudiaTable.setCellFactory(p -> new TableCell<>() {

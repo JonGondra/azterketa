@@ -19,7 +19,7 @@ public class CMSDB {
     }
 
     public void addToDB(CMSModel cmsModel){
-        String query = "INSERT INTO xxxx(xx,xx,xx) VALUES ('xx','xx','xx')";
+        String query = "INSERT INTO checksums VALUES(1,'"+cmsModel.getVersion()+"','"+cmsModel.getMd5()+"','README')";
         dbcontroller.execSQL(query);
     }
 
