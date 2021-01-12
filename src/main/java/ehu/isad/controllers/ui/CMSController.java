@@ -106,13 +106,12 @@ public class CMSController implements Initializable {
 
         //Como hacer que las columnas sean editables
         //Esto en caso de text field.
-        versionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         //Asi es como se guarda en el objeto.
-        Callback<TableColumn<CMSModel, String>, TableCell<CMSModel, String >> defaultTextFieldCellFactoryIzena
+        versionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        Callback<TableColumn<CMSModel, String>, TableCell<CMSModel, String >> defaultTextFieldCellFactoryVERSION
                 = TextFieldTableCell.forTableColumn();
-
         versionColumn.setCellFactory(col -> {
-            TableCell<CMSModel, String> cell = defaultTextFieldCellFactoryIzena.call(col);
+            TableCell<CMSModel, String> cell = defaultTextFieldCellFactoryVERSION.call(col);
             return cell ;
         });
 
