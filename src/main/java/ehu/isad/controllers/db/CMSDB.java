@@ -30,7 +30,7 @@ public class CMSDB {
         try {
             while (rs.next()) {
                 String version  = rs.getString("version");
-                cmsModel = new CMSModel(url,md5,version);
+                cmsModel = new CMSModel(url,version,md5);
             }
         } catch(SQLException e){
             e.printStackTrace();
