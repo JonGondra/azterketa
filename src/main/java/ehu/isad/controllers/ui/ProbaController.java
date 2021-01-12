@@ -37,18 +37,18 @@ public class ProbaController implements Initializable {
         //tabla.setEditable(true);
         //columna.setCellValueFactory(new PropertyValueFactory<>("atributoObjeto"));
         //columna.setCellValueFactory(new PropertyValueFactory<>("atributoObjeto"));
-        // columna.setCellValueFactory(new PropertyValueFactory<>("atributoObjeto"));
+        //columna.setCellValueFactory(new PropertyValueFactory<>("atributoObjeto"));
 
         //Como hacer que las columnas sean editables
         //Esto en caso de text field.
-        //toColumb.setCellFactory(TextFieldTableCell.forTableColumn());
+        //columna.setCellFactory(TextFieldTableCell.forTableColumn());
         //Asi es como se guarda en el objeto.
-        //        toColumb.setOnEditCommit((TableColumn.CellEditEvent<MezuaModel, String> event) -> {
+        //        columna.setOnEditCommit((TableColumn.CellEditEvent<MezuaModel, String> event) -> {
         //            TablePosition<MezuaModel, String> pos = event.getTablePosition();
         //            int row = pos.getRow();
         //            MezuaModel captchaModel = event.getTableView().getItems().get(row);
         //            String content = event.getNewValue();
-        //            captchaModel.setNori(content);
+        //            captchaModel.setAtributo(content);
         //
         //        });
         //Si es una foto, asi se carga el display
@@ -67,6 +67,33 @@ public class ProbaController implements Initializable {
         //            };
         //        });
         //tabla.setItems(lista);
+
+        //checkbox
+
+        //columna.setCellValueFactory(new PropertyValueFactory<>("atributoObjeto"));
+        //column.setEditable(true);
+        //column.setCellFactory(p -> {
+        //    CheckBoxTableCell<KirolariaModel, Boolean> cell = new CheckBoxTableCell<KirolariaModel, Boolean>();
+        //    cell.setAlignment(Pos.CENTER);
+        //    return cell;
+        //});
+
+        //column.setCellValueFactory(new Callback<>() {
+
+        //    @Override
+        //    public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<KirolariaModel, Boolean> param) {
+        //        KirolariaModel person = param.getValue();
+        //        SimpleBooleanProperty booleanProp = new SimpleBooleanProperty(person.isVegetarian());
+        //        // When "active?" column change.
+        //        booleanProp.addListener(new ChangeListener<Boolean>() {
+        //            @Override
+        //            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,                                                                               Boolean newValue) {
+        //                person.setVegetarian(newValue);
+        //            }
+        //        });
+        //        return booleanProp;
+        //    }
+        //});
 
     }
 }
